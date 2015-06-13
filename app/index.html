@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" >
+  <head>
+    <title>NofApp: The Global Fapsperiment</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/0.9.8/angular-material.min.css">
+    <link rel="stylesheet" href="assets/app.css"/>
+    
+    <!-- Angular and Angular-Material -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/0.9.8/angular-material.min.js"></script>
+    
+    <!-- Angular-NVD3 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.7.0/nv.d3.min.js"></script>
+    <script src="./bower_components/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.7.0/nv.d3.min.css"/>
+    
+    <!-- Firebase and AngularFire -->
+    <script src="https://cdn.firebase.com/js/client/2.2.5/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/1.1.1/angularfire.min.js"></script>
+    
+    <!-- App -->
+    <script src="./src/app.js"></script>
+    <script src="./src/nofapp-webutils.js"></script>
+    <script src="./src/MainController.js"></script>
+  </head>
+
+  <body ng-app="nofapp-web" layout="row" ng-controller="MainController">
+
+  <div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2">
+
+    <md-toolbar layout="row" class="md-whiteframe-z1">
+      <!-- <md-button class="menu" hide-gt-md ng-click="ul.toggleList()" aria-label="Show Menu">
+        <md-icon md-svg-icon="menu" ></md-icon>
+      </md-button> -->
+      <h1>NofApp: The Global Fapsperiment</h1>
+    </md-toolbar>
+
+    <md-content flex id="content">
+
+      <md-tabs md-dynamic-height md-border-bottom>
+        
+            <md-tab label="Stats">
+              
+              <div layout="row" layout-margin layout-fill layout-padding>
+              <md-toolbar md-scroll-shrink class="md-primary">
+                <div class="md-toolbar-tools">
+                   <h2>
+                     <span>Take Part in the Fapsperiment</span>
+                   </h2>
+                   <span flex></span>
+                   <md-button class="md-icon-button" aria-label="Android" ng-href="https://play.google.com/store/apps/details?id=com.betterarguruments.nofapp" target="_blank">
+                     <md-icon md-font-set="material-icons">android</md-icon>
+                   </md-button>
+                 </div>
+              </md-toolbar>
+              </div>
+              
+               <div layout="row" layout-margin layout-fill layout-padding>
+                 <div flex>
+                   <md-button class="md-primary md-hue-1" ng-click="showSimpleToast()">{{stats.users.count}} Users</md-button>
+                 </div>
+                 <div flex>
+                   <md-button class="md-primary md-hue-1">{{stats.events.count}} Events logged</md-button>
+                 </div>
+                 <div flex>
+                   <md-button class="md-primary md-hue-1">{{stats.events.count_5}} Relapses</md-button>
+                 </div>
+                 <div flex>
+                   <md-button class="md-primary md-hue-1">{{stats.events.count_4}} Sex Sessions!</md-button>
+                 </div>
+               </div>
+               
+               <div layout="row" layout-margin layout-fill layout-padding>
+               <md-toolbar md-scroll-shrink class="md-primary">
+                 <div class="md-toolbar-tools">
+                    <h2>
+                      <span>30 Days</span>
+                    </h2>
+                  </div>
+               </md-toolbar>
+               </div>
+               
+               <div layout="row" layout-margin layout-fill layout-padding>
+                 <div flex>
+                   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                 </div>
+               </div>
+              
+            </md-tab>
+            <md-tab label="About">
+              <md-content class="md-padding">
+                <h1 class="md-display-2">Tab Two</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi. Aliquam erat volutpat. Nam placerat, tortor in ultrices porttitor, orci enim rutrum enim, vel tempor sapien arcu a tellus. Vivamus convallis sodales ante varius gravida. Curabitur a purus vel augue ultrices ultricies id a nisl. Nullam malesuada consequat diam, a facilisis tortor volutpat et. Sed urna dolor, aliquet vitae posuere vulputate, euismod ac lorem. Sed felis risus, pulvinar at interdum quis, vehicula sed odio. Phasellus in enim venenatis, iaculis tortor eu, bibendum ante. Donec ac tellus dictum neque volutpat blandit. Praesent efficitur faucibus risus, ac auctor purus porttitor vitae. Phasellus ornare dui nec orci posuere, nec luctus mauris semper.</p>
+                <p>Morbi viverra, ante vel aliquet tincidunt, leo dolor pharetra quam, at semper massa orci nec magna. Donec posuere nec sapien sed laoreet. Etiam cursus nunc in condimentum facilisis. Etiam in tempor tortor. Vivamus faucibus egestas enim, at convallis diam pulvinar vel. Cras ac orci eget nisi maximus cursus. Nunc urna libero, viverra sit amet nisl at, hendrerit tempor turpis. Maecenas facilisis convallis mi vel tempor. Nullam vitae nunc leo. Cras sed nisl consectetur, rhoncus sapien sit amet, tempus sapien.</p>
+                <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+              </md-content>
+            </md-tab>
+          </md-tabs>
+
+    </md-content>
+
+  </div>
+  </body>
+</html>
