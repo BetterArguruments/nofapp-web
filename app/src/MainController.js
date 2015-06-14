@@ -1,6 +1,12 @@
 angular.module('nofapp-web')
-.controller('MainController', function($scope, $mdSidenav, $mdBottomSheet, $log, $q, $mdToast, $firebaseObject, $firebaseArray, StatsList,
+.controller('MainController', function($window, $scope, $mdSidenav, $mdBottomSheet, $log, $q, $mdToast, $firebaseObject, $firebaseArray, StatsList,
   StatsNotifications) {
+  
+    $scope.$watch(function(){
+           return $window.innerWidth;
+        }, function(value) {
+          $scope.windowWidth = value;
+       });
   
   /*
   *   Toast
@@ -33,6 +39,7 @@ angular.module('nofapp-web')
     switch (event.type) {
       case 4: $scope.showSimpleToast("Someone just had Sex! Nice!"); break;
       case 5: $scope.showSimpleToast("Someone just relapsed :("); break;
+      default: $scope.showSimpleToast("Someone added some Data");
     }
   };
 
@@ -71,34 +78,65 @@ angular.module('nofapp-web')
   }
   
   var splitEventSeriesIntoTypes = function(events) {
-    var eventsSplit = new Array(5);
+    var lastFap = null;
+    var jSwitch = 0;
+    var eventsSplit = new Array(6);
     for (i = 0; i < eventsSplit.length; i++) {
-      eventsSplit[i] = [];
+      eventsSplit[i] = {};
     }
     
     for (var key in events) {
       // User Level
-      for (j = 0; j < events[key].length; j++) {
-        console.log(events[key][j]);
+      for (j = 0, jSwitch=1; j < events[key].length; j++, jSwitch=1) {
         // FapSeries Level
         // Get last Fap Time
         for (k = 0; k < events[key][j].length; k++) {
-          if (events[key][j][k].type === 4) { var lastFap = events[key][j][k].time; break; }
+          if (events[key][j][k].type === 4) { lastFap = events[key][j][k].time; break; }
+          if (k === events[key][j].length-1) { console.log("lastFap not found!"); }
         }
         
-        console.log("lastFap: " + lastFap);
-        
         for (k = 0; k < events[key][j].length; k++) {
-          // Data Level. Finally!
-          console.log(events[key][j][k]);
-          console.log(eventsSplit[events[key][j][k].type].length);
-          if (eventsSplit[events[key][j][k].type][eventsSplit[events[key][j][k].type].length-1] !== events[key] + "-" + events[key][j]) {
-            eventsSplit[events[key][j][k].type].push(events[key] + "-" + events[key][j]);
+          if (events[key][j][k].type === 5) {
+            // Skip Fap
+            continue;
           }
-          eventsSplit[events[key][j][k].type][eventsSplit[events[key][j][k].type].length-1].push([events[key][j][k].time - lastFap, events[key][j][k].value]);
+          // Data Level. Finally!
+          
+          // Initialize Array where FapSeries per User reside
+          if (typeof eventsSplit[events[key][j][k].type][key] === "undefined") {
+            eventsSplit[events[key][j][k].type][key] = [];
+          }
+          // Extend Array where single FapSeries reside
+          if (jSwitch === 1 || eventsSplit[events[key][j][k].type][key].length === 0) {
+            eventsSplit[events[key][j][k].type][key][eventsSplit[events[key][j][k].type][key].length] = [];
+            jSwitch = 0;
+          }
+          eventsSplit[events[key][j][k].type][key][eventsSplit[events[key][j][k].type][key].length-1].push([events[key][j][k].time - lastFap, events[key][j][k].value]);
         }
       }
     }
+    console.log(eventsSplit);
+    extractEventData(eventsSplit);
+  }
+  
+  var extractEventData = function(events) {
+    var eventChartData = new Array(6);
+    for (i = 0; i < eventChartData.length; i++) {
+      eventChartData[i] = [];
+    }
+    
+    for (i = 0; i < events.length; i++) {
+      for (var key in events[i]) {
+        for (j = 0; j < events[i][key].length; j++) {
+          eventChartData[i].push({
+            "key": key + "-" + j,
+            "values": events[i][key][j]
+          });
+        }
+      }
+    }
+    console.log(eventChartData);
+    $scope.eventChartData = eventChartData;
   }
 
   var refEvents = new Firebase("https://nofapp.firebaseio.com/events");

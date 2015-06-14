@@ -48,29 +48,30 @@
 
     <md-content flex id="content">
 
-      <md-tabs md-dynamic-height md-border-bottom>
+      <md-tabs md-dynamic-height md-border-bottom md-swipe-content>
         
             <md-tab label="Stats">
               
-              <div layout="row" layout-margin layout-fill layout-padding>
+              <!-- <div layout="row" layout-margin layout-fill layout-padding>
               <md-toolbar md-scroll-shrink class="md-primary">
                 <div class="md-toolbar-tools">
                    <h2>
                      <span>Stats</span>
                    </h2>
-                   <!-- Button to get the Android App. Looks stupid.
                    <span flex></span>
                    <md-button class="md-icon-button md-fab" aria-label="Android" ng-href="https://play.google.com/store/apps/details?id=com.betterarguruments.nofapp" target="_blank">
                    <md-tooltip>
                      Get the App
                    </md-tooltip>
                      <md-icon md-font-set="material-icons">android</md-icon>
-                   </md-button> -->
+                   </md-button>
                  </div>
               </md-toolbar>
-              </div>
+              </div> -->
               
-               <div layout="row" layout-margin layout-fill layout-padding>
+              
+              
+               <!-- <div layout="row" layout-margin layout-fill layout-padding>
                  <div flex>
                    <md-button class="md-primary md-hue-1" ng-click="showSimpleToast()">{{stats.users.count}} Users</md-button>
                  </div>
@@ -83,9 +84,24 @@
                  <div flex>
                    <md-button class="md-primary md-hue-1">{{stats.events.count_4}} Sex Sessions!</md-button>
                  </div>
+               </div> -->
+                 
+               <div layout="row" layout-sm="column" class="md-whiteframe-z1" layout-align="space-between center">
+                 <div>
+                    <h2 class="md-tab">{{stats.users.count}} Participants</h2>
+                 </div>
+                 <div>
+                    <h2 class="md-tab">{{stats.events.count}} Events logged</h2>
+                 </div>
+                 <div>
+                    <h2 class="md-tab">{{stats.events.count_5}} Relapses</h2>
+                 </div>
+                 <div>
+                    <h2 class="md-tab">{{stats.events.count_4}} Sex Sessions</h2>
+                 </div>
                </div>
                
-               <div layout="row" layout-margin layout-fill layout-padding>
+               <!-- <div layout="row" layout-margin layout-fill layout-padding>
                <md-toolbar md-scroll-shrink class="md-primary">
                  <div class="md-toolbar-tools">
                     <h2>
@@ -93,26 +109,104 @@
                     </h2>
                   </div>
                </md-toolbar>
+               </div> -->
+               
+               <div layout="row" layout-sm="column">
+                 <div flex class="md-whiteframe-z1">
+                   <div layout="column" layout-align="center center">
+                     <div flex class="md-title">Mood</div>
+                       <div flex>
+                       <nvd3-line-chart
+                           id="mood"
+                           data="eventChartData[1]"
+                           width="{{windowWidth / 2}}"
+                           height="{{windowWidth / 2 * 0.618}}"
+                           showXAxis="true"
+                           showYAxis="true"
+                           tooltips="true"
+                           interactive="true"
+                           yAxisTickValues="[1, 2, 3, 4, 5]"
+                           forcey="[1,5]"
+                           interpolate="basis"
+                           noData="We need more Data!">
+                         <svg></svg>
+                       </nvd3-line-chart>
+                     </div>
+                   </div>
+                 </div>
+                 
+                 <div flex class="md-whiteframe-z1">
+                   <div layout="column" layout-align="center center">
+                     <div flex class="md-title">Energy</div>
+                       <div flex>
+                       <nvd3-line-chart
+                           id="energy"
+                           data="eventChartData[2]"
+                           width="{{windowWidth / 2}}"
+                           height="{{windowWidth / 2 * 0.618}}"
+                           showXAxis="true"
+                           showYAxis="true"
+                           tooltips="true"
+                           interactive="true"
+                           yAxisTickValues="[1, 2, 3, 4, 5]"
+                           forcey="[1,5]"
+                           interpolate="basis"
+                           noData="We need more Data!">
+                         <svg></svg>
+                       </nvd3-line-chart>
+                     </div>
+                   </div>
+                 </div>
                </div>
                
-              <div layout="row" layout-margin="" layout-fill="" layout-padding="">
-                <div flex>
-                  <p>Mood</p>
-                  <p>{{ refEventsArray | json }}</p>
-                </div>
-                <div flex>
-                  Energy
-                </div>
-              </div>
               
-              <div layout="row" layout-margin="" layout-fill="" layout-padding="">
-                <div flex>
-                  Libido
-                </div>
-                <div flex>
-                  Sex
-                </div>
-              </div>
+               <div layout="row" layout-sm="column">
+                 <div flex class="md-whiteframe-z1">
+                   <div layout="column" layout-align="center center">
+                     <div flex class="md-title">Libido</div>
+                       <div flex>
+                       <nvd3-line-chart
+                           id="libido"
+                           data="eventChartData[3]"
+                           width="{{windowWidth / 2}}"
+                           height="{{windowWidth / 2 * 0.618}}"
+                           showXAxis="true"
+                           showYAxis="true"
+                           tooltips="true"
+                           interactive="true"
+                           yAxisTickValues="[1, 2, 3, 4, 5]"
+                           forcey="[1,5]"
+                           interpolate="basis"
+                           noData="We need more Data!">
+                         <svg></svg>
+                       </nvd3-line-chart>
+                     </div>
+                   </div>
+                 </div>
+                 
+                 <div flex class="md-whiteframe-z1">
+                   <div layout="column" layout-align="center center">
+                     <div flex class="md-title">Sex Quality</div>
+                       <div flex>
+                       <nvd3-line-chart
+                           id="sexQuality"
+                           data="eventChartData[4]"
+                           width="{{windowWidth / 2}}"
+                           height="{{windowWidth / 2 * 0.618}}"
+                           showXAxis="true"
+                           showYAxis="true"
+                           tooltips="true"
+                           interactive="true"
+                           yAxisTickValues="[1, 2, 3, 4, 5]"
+                           forcey="[1,5]"
+                           interpolate="basis"
+                           noData="We need more Data!">
+                         <svg></svg>
+                       </nvd3-line-chart>
+                     </div>
+                   </div>
+                 </div>
+               </div>
 
               
             </md-tab>
