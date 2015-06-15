@@ -145,7 +145,7 @@ angular.module('nofapp-web')
   
   $scope.xAxisTickFormatFunction = function(){
     return function(d){
-      return (d !== 0) ? d / 86400 : 0;
+      return (d !== 0) ? Math.round(d / 86400) : 0;
     }
   };
   
