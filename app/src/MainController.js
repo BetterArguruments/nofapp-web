@@ -51,7 +51,7 @@ angular.module('nofapp-web')
   $scope.stats = $firebaseObject(refStats);
   
   /*
-  *   Events
+  *   Event Formatting
   */
 
   var sortEventSeriesByUser = function() {
@@ -91,7 +91,7 @@ angular.module('nofapp-web')
         // FapSeries Level
         // Get last Fap Time
         for (k = 0; k < events[key][j].length; k++) {
-          if (events[key][j][k].type === 4) { lastFap = events[key][j][k].time; break; }
+          if (events[key][j][k].type === 5) { lastFap = events[key][j][k].time; break; }
           if (k === events[key][j].length-1) { console.log("lastFap not found!"); }
         }
         
@@ -139,11 +139,37 @@ angular.module('nofapp-web')
     $scope.eventChartData = eventChartData;
   }
 
+  /*
+  *   Chart Fomatting
+  */
+  
+  $scope.xAxisTickFormatFunction = function(){
+    return function(d){
+      return (d !== 0) ? d / 86400 : 0;
+    }
+  };
+  
+  $scope.xAxisTickValuesFunction = function() {
+    return function(d){
+      var tickVals = [];
+      var values = d[0].values;
+      console.log(values);
+      for (i = 0; i < values[values.length-1][0] / 86400; i++) {
+        tickVals.push(i);
+      }
+      console.log(tickVals);
+      return tickVals;
+    };
+  };
+
+  /* 
+  *   Notifications
+  */
+
   var refEvents = new Firebase("https://nofapp.firebaseio.com/events");
   
   $scope.refEventsArray = $firebaseArray(refEvents.orderByChild("time"));
   
-  // $scope.statsNotifications = StatsNotifications;
   $scope.refEventsArray.$loaded().then(function() {
     $scope.refEventsArrayLength = $scope.refEventsArray.length;
     sortEventSeriesByUser();

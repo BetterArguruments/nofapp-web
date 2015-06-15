@@ -44,6 +44,15 @@
         <md-icon md-svg-icon="menu" ></md-icon>
       </md-button> -->
       <h1>NofApp: The Global Fapsperiment</h1>
+      <md-button class="md-fab" aria-label="NofApp @ GitHub" ng-href="https://github.com/BetterArguruments/nofapp" target="_blank">
+          <md-icon>code</md-icon>
+      </md-button>
+      <md-button class="md-fab" aria-label="NofApp @ GitHub" ng-href="https://github.com/BetterArguruments/nofapp-web" target="_blank">
+          <md-icon>code</md-icon>
+      </md-button>
+      <md-button class="md-fab" aria-label="Get the Android App" ng-href="https://play.google.com/store/apps/details?id=com.betterarguruments.nofapp" target="_blank">
+          <md-icon>android</md-icon>
+      </md-button>
     </md-toolbar>
 
     <md-content flex id="content">
@@ -126,7 +135,10 @@
                            tooltips="true"
                            interactive="true"
                            yAxisTickValues="[1, 2, 3, 4, 5]"
+                           forcex="[0]"
                            forcey="[1,5]"
+                           xAxisTickFormat="xAxisTickFormatFunction()"
+                           xAxisTickValues="xAxisTickValuesFunction()"
                            interpolate="basis"
                            noData="We need more Data!">
                          <svg></svg>
@@ -149,7 +161,10 @@
                            tooltips="true"
                            interactive="true"
                            yAxisTickValues="[1, 2, 3, 4, 5]"
+                           forcex="[0]"
                            forcey="[1,5]"
+                           xAxisTickFormat="xAxisTickFormatFunction()"
+                           xAxisTickValues="xAxisTickValuesFunction()"
                            interpolate="basis"
                            noData="We need more Data!">
                          <svg></svg>
@@ -175,7 +190,10 @@
                            tooltips="true"
                            interactive="true"
                            yAxisTickValues="[1, 2, 3, 4, 5]"
+                           forcex="[0]"
                            forcey="[1,5]"
+                           xAxisTickFormat="xAxisTickFormatFunction()"
+                           xAxisTickValues="xAxisTickValuesFunction()"
                            interpolate="basis"
                            noData="We need more Data!">
                          <svg></svg>
@@ -198,7 +216,10 @@
                            tooltips="true"
                            interactive="true"
                            yAxisTickValues="[1, 2, 3, 4, 5]"
+                           forcex="[0]"
                            forcey="[1,5]"
+                           xAxisTickFormat="xAxisTickFormatFunction()"
+                           xAxisTickValues="xAxisTickValuesFunction()"
                            interpolate="basis"
                            noData="We need more Data!">
                          <svg></svg>
@@ -212,18 +233,30 @@
             </md-tab>
             <md-tab label="Participate">
               <md-content class="md-padding">
-                <h1 class="md-display-2">Tab Two</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi. Aliquam erat volutpat. Nam placerat, tortor in ultrices porttitor, orci enim rutrum enim, vel tempor sapien arcu a tellus. Vivamus convallis sodales ante varius gravida. Curabitur a purus vel augue ultrices ultricies id a nisl. Nullam malesuada consequat diam, a facilisis tortor volutpat et. Sed urna dolor, aliquet vitae posuere vulputate, euismod ac lorem. Sed felis risus, pulvinar at interdum quis, vehicula sed odio. Phasellus in enim venenatis, iaculis tortor eu, bibendum ante. Donec ac tellus dictum neque volutpat blandit. Praesent efficitur faucibus risus, ac auctor purus porttitor vitae. Phasellus ornare dui nec orci posuere, nec luctus mauris semper.</p>
-                <p>Morbi viverra, ante vel aliquet tincidunt, leo dolor pharetra quam, at semper massa orci nec magna. Donec posuere nec sapien sed laoreet. Etiam cursus nunc in condimentum facilisis. Etiam in tempor tortor. Vivamus faucibus egestas enim, at convallis diam pulvinar vel. Cras ac orci eget nisi maximus cursus. Nunc urna libero, viverra sit amet nisl at, hendrerit tempor turpis. Maecenas facilisis convallis mi vel tempor. Nullam vitae nunc leo. Cras sed nisl consectetur, rhoncus sapien sit amet, tempus sapien.</p>
-                <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+                <h1 class="md-display-2">Take Part in the Fapsperiment</h1>
+                <h2 class="md-headline">Android</h2>
+                <p>Currently, NofApp is released for Android only.</p>
+                <md-button class="md-raised" ng-href="https://play.google.com/store/apps/details?id=com.betterarguruments.nofapp" target="_blank">Get it via Google Play</md-button>
+                <p>Technically, we already have prepared a working iOS Version and are ready to release it, but as we're students we would appreciate donations for the initial 99$ App Store Developer Fee.</p>
+                <h2 class="md-headline">Donate</h2>
+                <p>You may donate (or buy us a beer) via PayPal:</p>
+                <md-button class="md-raised" ng-href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=hello%40betterarguruments%2ecom&lc=DE&no_note=1&no_shipping=1&currency_code=EUR&bn=PP%2dDonationsBF%3atest%2epng%3aNonHosted" target="_blank">Donate via PayPal</md-button>
               </md-content>
             </md-tab>
             <md-tab label="About">
               <md-content class="md-padding">
-                <h1 class="md-display-2">Tab Two</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi. Aliquam erat volutpat. Nam placerat, tortor in ultrices porttitor, orci enim rutrum enim, vel tempor sapien arcu a tellus. Vivamus convallis sodales ante varius gravida. Curabitur a purus vel augue ultrices ultricies id a nisl. Nullam malesuada consequat diam, a facilisis tortor volutpat et. Sed urna dolor, aliquet vitae posuere vulputate, euismod ac lorem. Sed felis risus, pulvinar at interdum quis, vehicula sed odio. Phasellus in enim venenatis, iaculis tortor eu, bibendum ante. Donec ac tellus dictum neque volutpat blandit. Praesent efficitur faucibus risus, ac auctor purus porttitor vitae. Phasellus ornare dui nec orci posuere, nec luctus mauris semper.</p>
-                <p>Morbi viverra, ante vel aliquet tincidunt, leo dolor pharetra quam, at semper massa orci nec magna. Donec posuere nec sapien sed laoreet. Etiam cursus nunc in condimentum facilisis. Etiam in tempor tortor. Vivamus faucibus egestas enim, at convallis diam pulvinar vel. Cras ac orci eget nisi maximus cursus. Nunc urna libero, viverra sit amet nisl at, hendrerit tempor turpis. Maecenas facilisis convallis mi vel tempor. Nullam vitae nunc leo. Cras sed nisl consectetur, rhoncus sapien sit amet, tempus sapien.</p>
-                <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+                <h1 class="md-display-2">About the Fapsperiment</h1>
+                <p>The Fapsperiment is an effort to examine whether the abstinence of masturbation has effects on Mood, Energy, Libido, Sex Frequency and Quality.</p>
+                <p>Participants download the Android App in which they are able to track their mood, energy, libido and sex during their abstinence from masturbation. Additionally, they can take notes and log relapses, should the force be weak in them.</p>
+                  
+                <h2 class="md-headline">An Open-Source, Open-Data Study</h2>
+                  <p>But NofApp is much more than just an App to track mood while abstaining from masturbation. As scientific evidence is generally sparse regarding this topic and peer-reviewed journals are an antiquated system which is deemed to be replaced sometime soon, we hope to deliver a blueprint for (medical) studies in the future. Our concept is geared towards openness regarding every aspect: The Android App and this Website are completely open-source.</p>
+                  
+                  <p>On top of that, even the Data is open-access and can publicly be viewed. We believe in complete transparency while respecting the anonymity of Fapstronauts.</p>
+                  
+                <h2 class="md-headline">Feel Free to Contribute</h2>
+                <p>We therefore would like to invite everyone to contribute, whether this may be on the programming (app, website), statistical (data) or medical level. You can find links to our GitHub repositories at the top of this page. We look forward to hearing from you!</p>
+                
               </md-content>
             </md-tab>
           </md-tabs>
